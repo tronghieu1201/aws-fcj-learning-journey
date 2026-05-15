@@ -1,0 +1,109 @@
+:root {
+  /* AWS Workshop Theme Variant for Relearn
+     Based on fcj-workshop-template-main theme-workshop.css
+     Adapted for hugo-theme-relearn CSS variables */
+
+  /* Brand colors - AWS Orange */
+  --PRIMARY-color: rgba( 253, 152, 39, 1 ); /* AWS Orange #fd9827 */
+  --PRIMARY-HOVER-color: rgba( 224, 125, 4, 1 ); /* AWS Orange hover #e07d04 */
+  --SECONDARY-color: rgba( 72, 129, 205, 1 ); /* Blue link #4881cd */
+  --SECONDARY-HOVER-color: rgba( 89, 154, 241, 1 ); /* Blue link hover #599af1 */
+  --ACCENT-color: rgba( 241, 158, 57, 1 ); /* AWS Accent #f19e39 */
+  --ACCENT-HOVER-color: rgba( 224, 125, 4, 1 ); /* AWS Accent hover #e07d04 */
+
+  /* Menu Header - Dark Navy */
+  --MENU-HEADER-BG-color: rgba( 40, 62, 91, 1 ); /* #283e5b - dark navy header */
+  --MENU-HEADER-BORDER-color: rgba( 67, 92, 124, 1 ); /* #435c7c */
+  --MENU-HEADER-color: rgba( 204, 204, 204, 1 ); /* light text on dark bg */
+  --MENU-SEARCH-color: rgba( 204, 204, 204, 1 );
+  --MENU-SEARCH-BG-color: rgba( 32, 44, 60, 1 ); /* #202c3c */
+  --MENU-SEARCH-BORDER-color: rgba( 77, 101, 132, 1 ); /* #4d6584 */
+
+  /* Menu Home link */
+  --MENU-HOME-LINK-color: rgba( 204, 204, 204, 1 );
+  --MENU-HOME-LINK-HOVER-color: rgba( 255, 255, 255, 1 );
+
+  /* Sidebar background - Dark Navy #1c222a */
+  --MENU-SECTIONS-BG-color: linear-gradient(180deg, #283e5b 0%, #1c222a 30%);
+  --MENU-SECTIONS-ACTIVE-BG-color: rgba( 10, 12, 14, 1 ); /* #0a0c0e */
+  --MENU-SECTIONS-LINK-color: rgba( 204, 204, 204, 1 ); /* #ccc */
+  --MENU-SECTIONS-LINK-HOVER-color: rgba( 230, 230, 230, 1 ); /* #e6e6e6 */
+  --MENU-SECTION-ACTIVE-CATEGORY-color: rgba( 119, 119, 119, 1 ); /* #777 */
+  --MENU-SECTION-SEPARATOR-color: rgba( 32, 39, 43, 1 ); /* #20272b */
+
+  /* Main Content Area */
+  --MAIN-BG-color: rgba( 255, 255, 255, 1 );
+  --MAIN-TEXT-color: rgba( 50, 50, 53, 1 ); /* #323235 */
+  --MAIN-TITLES-TEXT-color: rgba( 119, 139, 165, 1 ); /* #778ba5 */
+
+  /* Code blocks */
+  --CODE-theme: relearn-light;
+  --CODE-BLOCK-color: rgba( 39, 40, 34, 1 );
+  --CODE-BLOCK-BG-color: rgba( 28, 34, 42, 1 ); /* #1c222a dark */
+  --CODE-BLOCK-BORDER-color: rgba( 67, 92, 124, 1 ); /* #435c7c */
+  --CODE-INLINE-color: rgba( 94, 94, 94, 1 );
+  --CODE-INLINE-BG-color: rgba( 255, 250, 233, 1 );
+  --CODE-INLINE-BORDER-color: rgba( 248, 232, 200, 1 );
+
+  /* Browser & Tools themes */
+  --BROWSER-theme: light;
+  --MERMAID-theme: default;
+  --OPENAPI-theme: light;
+  --OPENAPI-CODE-theme: idea;
+
+  /* Box colors */
+  --BOX-CAPTION-color: rgba( 255, 255, 255, 1 );
+  --BOX-BG-color: rgba( 255, 255, 255, .833 );
+  --BOX-TEXT-color: rgba( 16, 16, 16, 1 );
+  --BOX-INFO-color: rgba( 253, 152, 39, 1 ); /* AWS Orange */
+
+  /* Logo sizing */
+  --LOGO-IMAGE-width: 8rem;
+}
+
+/* Custom font families */
+body {
+  font-family: "Work Sans", "Inter", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", "Inter", sans-serif;
+  color: var(--MAIN-TITLES-TEXT-color) !important;
+}
+
+/* Sidebar footer AWS branding */
+#R-sidebar #R-footer h2 {
+  font-size: 20px;
+  color: #fd9827 !important;
+  margin: 10px 0px 5px;
+  padding: 0px;
+  font-weight: normal !important;
+  padding-top: 30px;
+  border-top: 1px dotted #384657;
+}
+
+/* Navigation prev/next buttons */
+a.nav-prev, a.nav-next {
+  color: #f19e39 !important;
+}
+a.nav-prev:hover, a.nav-next:hover {
+  color: #e07d04 !important;
+}
+
+/* Link underline animation */
+#R-body a.highlight:after {
+  display: block;
+  content: "";
+  height: 1px;
+  width: 0%;
+  transition: width 0.5s ease;
+  background-color: var(--SECONDARY-HOVER-color);
+}
+#R-body a.highlight:hover:after {
+  width: 100%;
+}
+
+/* Info notice box with AWS Orange */
+div.box.info {
+  border-color: #fd9827;
+}

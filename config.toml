@@ -1,0 +1,71 @@
+baseURL = "https://tronghieu1201.github.io/AWS_fcj-workshop-hieu/"
+defaultContentLanguage = "en"
+relativeURLs = false
+canonifyURLs = false
+
+# Theme
+theme = "hugo-theme-learn"
+
+# For search functionality
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  [params.author]
+    name = "Giáp Trọng Hiếu"
+  themeVariant = "workshop"
+  themevariant = "workshop"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  editURL = ""
+  custom_css = ["css/custom.css"]
+
+  # Logo configuration
+  [params.logo]
+    src = "/images/AWS_Logo.svg"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# ==========================================
+# Languages
+# ==========================================
+[Languages]
+  [Languages.en]
+    title = "Internship Report"
+    weight = 1
+    label = "English"
+
+  [[Languages.en.menu.shortcuts]]
+    name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
+    identifier = "AWS Study Group"
+    url = "https://awsstudygroup.com"
+    weight = 20
+
+  [[Languages.en.menu.shortcuts]]
+    name = "<i class='fab fa-facebook'></i> AWS Study Group - FB Group"
+    identifier = "AWS Study Group FB"
+    url = "https://www.facebook.com/groups/awsstudygroupfcj"
+    weight = 21
+
+  [Languages.vi]
+    title = "Báo cáo thực tập"
+    weight = 2
+    label = "Tiếng Việt"
+
+  [[Languages.vi.menu.shortcuts]]
+    name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
+    identifier = "AWS Study Group"
+    url = "https://awsstudygroup.com"
+    weight = 20
+
+  [[Languages.vi.menu.shortcuts]]
+    name = "<i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB"
+    identifier = "AWS Study Group FB"
+    url = "https://www.facebook.com/groups/awsstudygroupfcj"
+    weight = 21
+
+
