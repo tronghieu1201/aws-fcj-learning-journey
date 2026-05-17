@@ -1,0 +1,1 @@
+<img src="{{ (strings.TrimPrefix "/" (.Get "src")) | relURL }}" alt="{{ .Get "alt" | default "" }}" {{ with .Get "style" }}style="{{ . }}"{{ end }}>
