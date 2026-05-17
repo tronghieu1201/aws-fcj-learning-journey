@@ -1,48 +1,42 @@
-/* ============================================================
-   FIX: Override Novecento Sans Wide với font hỗ trợ tiếng Việt
-   Đặt file này tại: static/css/custom.css
-   ============================================================ */
-
-/* Import Be Vietnam Pro - font thiết kế riêng cho tiếng Việt */
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* 
-   Trick: Khai báo @font-face giả với tên "Novecento Sans Wide"
-   để ghi đè font gốc của theme bằng Be Vietnam Pro.
-   Trình duyệt sẽ dùng Be Vietnam Pro ở mọi nơi theme gọi Novecento.
-*/
+
 @font-face {
     font-family: "Novecento Sans Wide";
     src: local("Be Vietnam Pro"),
-         url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
+        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
     font-weight: 100;
     font-style: normal;
 }
+
 @font-face {
     font-family: "Novecento Sans Wide";
     src: local("Be Vietnam Pro"),
-         url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
+        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
     font-weight: 200;
     font-style: normal;
 }
+
 @font-face {
     font-family: "Novecento Sans Wide";
     src: local("Be Vietnam Pro"),
-         url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
+        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
 }
+
 @font-face {
     font-family: "Novecento Sans Wide";
     src: local("Be Vietnam Pro"),
-         url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
+        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
+
 @font-face {
     font-family: "Novecento Sans Wide";
     src: local("Be Vietnam Pro"),
-         url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
+        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
@@ -53,16 +47,28 @@
 @font-face {
     font-family: "Novecento Sans Wide";
     src: local("Be Vietnam Pro"),
-         url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
+        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
     font-weight: 900;
     font-style: normal;
 }
 
 /* Đảm bảo toàn bộ heading và body dùng Be Vietnam Pro */
 body,
-h1, h2, h3, h4, h5, h6,
-#body h1, #body h2, #body h3,
-p, td, th, li, a, label {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#body h1,
+#body h2,
+#body h3,
+p,
+td,
+th,
+li,
+a,
+label {
     font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif !important;
 }
 
@@ -215,10 +221,10 @@ body {
     background: rgba(255, 255, 255, 0.06) !important;
 }
 
-#sidebar .dd-item.active > a,
-#sidebar .dd-item.active > a:hover,
-#sidebar .dd-item.active > a:focus,
-#sidebar .active > a {
+#sidebar .dd-item.active>a,
+#sidebar .dd-item.active>a:hover,
+#sidebar .dd-item.active>a:focus,
+#sidebar .active>a {
     color: var(--MENU-SECTION-ACTIVE-CATEGORY-color) !important;
 }
 
@@ -244,7 +250,7 @@ body {
     display: grid !important;
     grid-template-columns: 240px minmax(0, 1fr) !important;
     gap: 24px !important;
-    align-items: start !important;
+    align-items: stretch !important;
     width: 100% !important;
     max-width: 100% !important;
     padding: 20px !important;
@@ -258,14 +264,18 @@ body {
 .student-photo-wrapper {
     width: 240px !important;
     max-width: 240px !important;
+    display: flex !important;
+    align-items: stretch !important;
+    overflow: hidden !important;
 }
 
 .student-photo {
     width: 100% !important;
     max-width: 240px !important;
-    height: 340px !important;
+    height: 100% !important;
     display: block !important;
     object-fit: cover !important;
+    object-position: center top !important;
     border-radius: 16px !important;
     box-shadow: 0 10px 24px rgba(11, 31, 51, 0.14) !important;
 }
@@ -308,33 +318,93 @@ body {
 @media (min-width: 1024px) {
     .student-info-card {
         grid-template-columns: 240px minmax(0, 1fr) !important;
+        align-items: stretch !important;
     }
 
-    .student-photo-wrapper { width: 240px !important; }
-    .student-photo { max-width: 240px !important; height: 340px !important; }
+    .student-photo-wrapper {
+        width: 240px !important;
+        display: flex !important;
+        align-items: stretch !important;
+    }
+
+    .student-photo {
+        width: 100% !important;
+        max-width: 240px !important;
+        height: 100% !important;
+    }
 }
 
 @media (min-width: 900px) and (max-width: 1200px) {
-    .student-info-card { grid-template-columns: 220px minmax(0, 1fr) !important; gap: 20px !important; padding: 18px !important; }
-    .student-photo-wrapper { width: 220px !important; }
-    .student-photo { max-width: 220px !important; height: 320px !important; }
-    .student-table-wrapper table { font-size: 0.9rem !important; }
-    .student-table-wrapper table td, .student-table-wrapper table th { padding: 10px 14px !important; }
+    .student-info-card {
+        grid-template-columns: 220px minmax(0, 1fr) !important;
+        gap: 20px !important;
+        padding: 18px !important;
+        align-items: stretch !important;
+    }
+
+    .student-photo-wrapper {
+        width: 220px !important;
+        display: flex !important;
+        align-items: stretch !important;
+    }
+
+    .student-photo {
+        width: 100% !important;
+        max-width: 220px !important;
+        height: 100% !important;
+    }
+
+    .student-table-wrapper table {
+        font-size: 0.9rem !important;
+    }
+
+    .student-table-wrapper table td,
+    .student-table-wrapper table th {
+        padding: 10px 14px !important;
+    }
 }
 
 @media (max-width: 899px) {
-    .student-info-card { grid-template-columns: 1fr !important; gap: 18px !important; padding: 16px !important; }
-    .student-photo-wrapper { width: 100% !important; max-width: 260px !important; margin: 0 auto !important; }
-    .student-photo { max-width: 260px !important; height: 340px !important; margin: 0 auto !important; }
-    .student-table-wrapper { width: 100% !important; }
+    .student-info-card {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        padding: 16px !important;
+        align-items: auto !important;
+    }
+
+    .student-photo-wrapper {
+        width: 100% !important;
+        max-width: 260px !important;
+        margin: 0 auto !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    .student-photo {
+        width: 100% !important;
+        max-width: 260px !important;
+        height: auto !important;
+        margin: 0 auto !important;
+    }
+
+    .student-table-wrapper {
+        width: 100% !important;
+    }
 }
 
 /* Ensure existing profile classes don't force wrapping — only override when not using student-info-card */
-.profile-avatar { min-width: 0 !important; }
-.profile-details { min-width: 0 !important; }
+.profile-avatar {
+    min-width: 0 !important;
+}
+
+.profile-details {
+    min-width: 0 !important;
+}
 
 /* make sure the student-info wrapper (when present) uses grid */
-.profile-info-section.student-info-card { display: grid !important; }
+.profile-info-section.student-info-card {
+    display: grid !important;
+}
 
 /* Content spacing for home page and section breathing room */
 #body-inner {
