@@ -1,58 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap');
 
-
-@font-face {
-    font-family: "Novecento Sans Wide";
-    src: local("Be Vietnam Pro"),
-        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
-    font-weight: 100;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Novecento Sans Wide";
-    src: local("Be Vietnam Pro"),
-        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
-    font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Novecento Sans Wide";
-    src: local("Be Vietnam Pro"),
-        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Novecento Sans Wide";
-    src: local("Be Vietnam Pro"),
-        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Novecento Sans Wide";
-    src: local("Be Vietnam Pro"),
-        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-/* Removed any global zoom to avoid scaling the entire site */
-
-
-@font-face {
-    font-family: "Novecento Sans Wide";
-    src: local("Be Vietnam Pro"),
-        url('https://fonts.gstatic.com/s/bevietnampro/v11/QdVPSTAyLFyeg_IDWvOJmVES_HwyPRs.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-}
-
-/* Đảm bảo toàn bộ heading và body dùng Be Vietnam Pro */
 body,
 h1,
 h2,
@@ -69,7 +16,58 @@ th,
 li,
 a,
 label {
-    font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif !important;
+    font-family: "Inter", "Roboto", "Noto Sans", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1f2937;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 0.85rem;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 0.75rem;
+}
+
+p,
+li {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1f2937;
+}
+
+small,
+.caption,
+.note,
+button,
+.tag,
+.badge {
+    font-family: "Inter", "Roboto", "Noto Sans", "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+button,
+.tag,
+.badge {
+    font-weight: 500;
 }
 
 /* Shrink avatar image if_shortcode style fails */
@@ -924,4 +922,10 @@ article::-moz-selection,
     #body-inner {
         padding: 1.5rem 1rem !important;
     }
+}
+/* Keep the real-time footer clock readable on the homepage/sidebar. */
+#footer-date,
+#footer-meta #footer-date,
+#footer-meta .realtime-clock {
+    color: #ffffff !important;
 }
