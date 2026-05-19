@@ -239,10 +239,261 @@ body {
     background: transparent !important;
 }
 
+/* Worklog landing page styling */
+.worklog-page {
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 44px 48px 52px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 1.4rem;
+    box-shadow: 0 20px 40px rgba(15, 56, 94, 0.08);
+}
+
+.worklog-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.worklog-title {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0;
+    color: var(--MENU-HEADER-BG-color);
+    text-transform: uppercase;
+}
+
+.worklog-divider {
+    width: 84px;
+    height: 1px;
+    background: rgba(47, 131, 200, 0.25);
+    margin: 1.2rem auto 0;
+}
+
+.worklog-list {
+    display: grid;
+    gap: 0.95rem;
+    width: 100%;
+}
+
+.worklog-button {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(47, 131, 200, 0.18);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.worklog-button:hover,
+.worklog-button:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(47, 131, 200, 0.35);
+    box-shadow: 0 14px 30px rgba(47, 131, 200, 0.12);
+}
+
+.worklog-week {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(47, 131, 200, 0.12);
+    color: var(--PRIMARY-color);
+    font-weight: 700;
+    font-size: 0.96rem;
+    white-space: nowrap;
+}
+
+.worklog-desc {
+    font-size: 0.98rem;
+    color: #153047;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.worklog-arrow {
+    color: var(--PRIMARY-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+@media (max-width: 760px) {
+    .worklog-page {
+        padding: 24px 24px 32px;
+    }
+
+    .worklog-title {
+        font-size: 2.8rem;
+    }
+
+    .worklog-button {
+        grid-template-columns: auto 1fr auto;
+        padding: 10px 14px;
+    }
+}
+
+@media (max-width: 520px) {
+    .worklog-page {
+        padding: 24px 20px 28px;
+    }
+
+    .worklog-title {
+        font-size: 2.4rem;
+    }
+
+    .worklog-button {
+        gap: 0.75rem;
+    }
+
+    .worklog-week {
+        font-size: 0.92rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .worklog-arrow {
+        font-size: 1.1rem;
+    }
+}
+
+/* Force EN and VI Worklog cards to have the same width */
+body[data-url$="/1-worklog/"] #body-inner,
+body[data-url$="/vi/1-worklog/"] #body-inner {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px 56px;
+    box-sizing: border-box;
+}
+
+/* Main Worklog card: do not shrink based on title text */
+body[data-url$="/1-worklog/"] .worklog-page,
+body[data-url$="/vi/1-worklog/"] .worklog-page {
+    width: 900px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 52px 64px 56px;
+    box-sizing: border-box;
+}
+
+/* Make the list use a stable width inside the card */
+body[data-url$="/1-worklog/"] .worklog-list,
+body[data-url$="/vi/1-worklog/"] .worklog-list {
+    width: 100%;
+    max-width: 760px;
+    margin: 28px auto 0;
+}
+
+/* Each week item should not shrink to text width */
+body[data-url$="/1-worklog/"] .worklog-button,
+body[data-url$="/vi/1-worklog/"] .worklog-button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    body[data-url$="/1-worklog/"] .worklog-page,
+    body[data-url$="/vi/1-worklog/"] .worklog-page {
+        width: 100%;
+        max-width: 900px;
+        padding: 44px 42px 48px;
+    }
+}
+
+@media (max-width: 700px) {
+    body[data-url$="/1-worklog/"] #body-inner,
+    body[data-url$="/vi/1-worklog/"] #body-inner {
+        padding: 0 16px 36px;
+    }
+
+    body[data-url$="/1-worklog/"] .worklog-page,
+    body[data-url$="/vi/1-worklog/"] .worklog-page {
+        width: 100%;
+        max-width: 100%;
+        padding: 32px 22px 36px;
+    }
+
+    body[data-url$="/1-worklog/"] .worklog-list,
+    body[data-url$="/vi/1-worklog/"] .worklog-list {
+        max-width: 100%;
+    }
+}
+
 #body-inner {
     background: var(--CONTENT-BG-color) !important;
     box-shadow: 0 26px 60px rgba(20, 46, 69, 0.12);
     border-radius: 1.5rem;
+}
+
+/* Remove extra background card behind Worklog */
+body[data-url$="/1-worklog/"] #body-inner,
+body[data-url$="/vi/1-worklog/"] #body-inner {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* If there is an outer wrapper, make it transparent */
+body[data-url$="/1-worklog/"] .worklog-wrapper,
+body[data-url$="/1-worklog/"] .worklog-container,
+body[data-url$="/vi/1-worklog/"] .worklog-wrapper,
+body[data-url$="/vi/1-worklog/"] .worklog-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* Keep only one main Worklog card */
+body[data-url$="/1-worklog/"] .worklog-page,
+body[data-url$="/vi/1-worklog/"] .worklog-page {
+    width: 900px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 52px 64px 56px;
+    box-sizing: border-box;
+
+    background: #ffffff !important;
+    border-radius: 28px !important;
+    box-shadow: 0 18px 45px rgba(26, 56, 86, 0.10) !important;
+}
+
+/* Make inner elements transparent, not another card */
+body[data-url$="/1-worklog/"] .worklog-inner,
+body[data-url$="/1-worklog/"] .worklog-card,
+body[data-url$="/vi/1-worklog/"] .worklog-inner,
+body[data-url$="/vi/1-worklog/"] .worklog-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+
+@media (max-width: 1100px) {
+    body[data-url$="/1-worklog/"] .worklog-page,
+    body[data-url$="/vi/1-worklog/"] .worklog-page {
+        width: 100%;
+        max-width: 900px;
+        padding: 44px 42px 48px;
+    }
+}
+
+@media (max-width: 700px) {
+    body[data-url$="/1-worklog/"] .worklog-page,
+    body[data-url$="/vi/1-worklog/"] .worklog-page {
+        width: 100%;
+        max-width: 100%;
+        padding: 32px 22px 36px;
+    }
 }
 
 /* Student Information compact layout - overrides previous flex rules */
