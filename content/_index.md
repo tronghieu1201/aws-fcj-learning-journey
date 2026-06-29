@@ -10,7 +10,7 @@ title: "Internship Report"
 
 <div class="profile-info-section student-info-card">
   <div class="profile-avatar student-photo-wrapper">
-    <img class="student-photo" src="/AWS_fcj-workshop-hieu/images/avatar.jpg?v=2" alt="Profile Picture">
+    <img class="student-photo" src="/aws-fcj-learning-journey/images/avatar.jpg?v=2" alt="Profile Picture">
   </div>
   <div class="profile-details student-table-wrapper">
     <table class="student-info-table">
