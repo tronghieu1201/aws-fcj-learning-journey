@@ -4,7 +4,7 @@ relativeURLs = false
 canonifyURLs = false
 
 # Theme
-theme = "hugo-theme-learn"
+theme = "hugo-theme-relearn"
 
 # For search functionality
 [outputs]
