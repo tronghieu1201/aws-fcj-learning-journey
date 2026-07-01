@@ -1,60 +1,76 @@
 ﻿---
-title: "Week 1 - Worklog"
+title: "Worklog"
 weight: 1
-pre: "<b>1.1. </b>"
+chapter: true
+pre: "<b>1. </b>"
 ---
 
-**Module 1** **Topic:** AWS Account, Billing Management, AWS Support, and IAM
+<div class="worklog-page">
+  <header class="worklog-header">
+    <h1 class="worklog-title">WEEKLY WORKLOG</h1>
+    <div class="worklog-divider" aria-hidden="true"></div>
+  </header>
 
-> **Note:** Detailed contents are updated upon completing each lab practice.
-
-## 1. Plan and Deliverables in Week 1
-
-| Day | Task Description | Lab ID | Related Service / Topic | Primary Objective | Reference | Status |
-|-----|------------------|--------|-------------------------|-------------------|-----------|--------|
-| Mon | Onboarding FCAJ & Reading regulations | - | WhatsApp / Internship Rules | Understand communication channels, guidelines, and reporting requirements | - | Completed |
-| Tue | AWS Account Creation | 000001 | AWS Account / Billing | Familiarize with AWS Free Tier, Management Console, and Billing Dashboard | [View Lab](https://000001.awsstudygroup.com/vi/) | Completed |
-| Wed | Budgeting with AWS Budgets | 000007 | AWS Budgets | Set up budgets, configure custom alerts, and monitor costs | [View Lab](https://000007.awsstudygroup.com/vi/) | Completed |
-| Thu | AWS Support Portal & Cases | 000009 | AWS Support | Understand Support Center, service tiers, and submit support cases | [View Lab](https://000009.awsstudygroup.com/vi/) | Completed |
-| Fri | Access Management with AWS IAM | 000002 | AWS IAM | Understand IAM Users, Groups, Roles, Policies, and least privilege access | [View Lab](https://000002.awsstudygroup.com/vi/) | Completed |
-
----
-
-## 2. Evidence Gallery
-
-| Requirement | Proof |
-|-------------|-------|
-| Create New AWS Account | {{< evidence src="/aws-fcj-learning-journey/images/week01-aws-console-home.png" label="View Evidence" >}} |
-| Set Up AWS Budgets | {{< evidence src="/aws-fcj-learning-journey/images/week01-budget.png" label="View Evidence" >}} |
-| AWS Support Interaction | {{< evidence src="/aws-fcj-learning-journey/images/week01-aws-support.png" label="View Evidence" >}} |
-| Access Control with IAM | {{< evidence src="/aws-fcj-learning-journey/images/week01-iam.png" label="View Evidence" >}} |
-
----
-
-## 3. Topics Covered
-
-*   **AWS Account & Billing:**
-    *   Successfully created an AWS Free Tier account and completed AWS Management Console login.
-    *   Verified account details, Free Tier status, active credits, and explored the Console Home interface.
-*   **AWS Budgets:**
-    *   Explored methods to monitor and predict AWS resource consumption charges.
-    *   Created custom cost budgets with configured alert thresholds to prevent cost overruns.
-*   **AWS Support:**
-    *   Accessed the AWS Support Center, reviewed default support plans, and understood how to open support tickets.
-*   **AWS IAM:**
-    *   Acquired basic concepts of IAM Users, User Groups, Roles, and JSON Policies.
-    *   Understood how to enforce the Principle of Least Privilege across AWS resources.
-
----
-
-## 4. Key Takeaways
-
-*   [x] Successfully registered and configured a personal AWS account.
-*   [x] Inspected account details and active promotional credits.
-*   [x] Implemented AWS Budgets to alert on exceeding usage thresholds.
-*   [x] Explored AWS Support options and logged a test inquiry.
-*   [x] Understood core access management concepts in IAM.
-
-<div style="margin-top: 32px; padding: 14px 20px; text-align: center; color: #0b2538; border-radius: 10px; font-weight: 600;">
-  END OF WEEK 1
+  <section class="worklog-list" aria-label="Weekly worklog links">
+    <a class="worklog-button" href="./1.1-week1/">
+      <span class="worklog-week">Week 1</span>
+      <span class="worklog-desc">Getting started with AWS Account, Billing, and IAM...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.2-week2/">
+      <span class="worklog-week">Week 2</span>
+      <span class="worklog-desc">Exploring Amazon VPC and Networking...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.3-week3/">
+      <span class="worklog-week">Week 3</span>
+      <span class="worklog-desc">Deploying Compute resources (EC2, Auto Scaling, Lightsail)...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.4-week4/">
+      <span class="worklog-week">Week 4</span>
+      <span class="worklog-desc">S3 Static Web Hosting, RDS Database, and CloudWatch Monitoring...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.5-week5/">
+      <span class="worklog-week">Week 5</span>
+      <span class="worklog-desc">S3 Security Practices, Cost Control with IAM, and Tagging...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.6-week6/">
+      <span class="worklog-week">Week 6</span>
+      <span class="worklog-desc">Automation with Lambda, CloudWatch, Systems Manager, and IaC...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.7-week7/">
+      <span class="worklog-week">Week 7</span>
+      <span class="worklog-desc">IAM Boundaries, Security Hub, AWS WAF, and Resource Auditing...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.8-week8/">
+      <span class="worklog-week">Week 8</span>
+      <span class="worklog-desc">Backup Management, SSL/HTTPS Configuration, Docker, and ECS...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.9-week9/">
+      <span class="worklog-week">Week 9</span>
+      <span class="worklog-desc">Serverless CI/CD, SAM deployment, and S3+CloudFront Integration...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.10-week10/">
+      <span class="worklog-week">Week 10</span>
+      <span class="worklog-desc">Cognito Authentication, SQS/SNS, and CloudFront Error Handling...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.11-week11/">
+      <span class="worklog-week">Week 11</span>
+      <span class="worklog-desc">Architecture Optimization, End-to-End Testing, and Workshop Docs...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+    <a class="worklog-button" href="./1.12-week12/">
+      <span class="worklog-week">Week 12</span>
+      <span class="worklog-desc">Internship Reflection, Key Takeaways, and Final Report Polishing...</span>
+      <span class="worklog-arrow">›</span>
+    </a>
+  </section>
 </div>
