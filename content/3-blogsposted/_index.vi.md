@@ -11,7 +11,7 @@ Danh sách các bài blog đã viết và đăng tải trong quá trình thực 
 
 ## Danh Sách Blog
 
-| # | Tên Bài Blog | Chủ Đề | Chi Tiết |
+| STT | Tên Bài Blog | Chủ Đề | Chi Tiết |
 |---|---|---|---|
 | 1 | Blog 1 - CloudFront ra mắt gói giá cố định Flat-rate: Chấm dứt nỗi lo “sập ví” khi traffic tăng vọt | AWS CloudFront / Cost Optimization | [Xem chi tiết](./3.1-blog1/) |
 | 2 | Blog 2 - [AWS Security] Bảo mật Serverless không nằm ở một lớp duy nhất | AWS Security / Serverless Security | [Xem chi tiết](./3.2-blog2/) |

@@ -11,7 +11,7 @@ A list of blog posts written and published during the internship with First Clou
 
 ## Blog List
 
-| # | Blog Title | Topic | Details |
+| STT | Blog Title | Topic | Details |
 |---|---|---|---|
 | 1 | Blog 1 - CloudFront Launches Flat-Rate Pricing: Ending the Fear of "Wallet Shock" during Traffic Spikes | AWS CloudFront / Cost Optimization | [View Details](./3.1-blog1/) |
 | 2 | Blog 2 - [AWS Security] Serverless Security is Not a Single-Layer Affair | AWS Security / Serverless Security | [View Details](./3.2-blog2/) |
