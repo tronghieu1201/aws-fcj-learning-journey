@@ -1,164 +1,168 @@
 ---
 title: "Proposal"
-date: 2026-05-14
+date: 2026-06-12
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
 
-## AI Content Generator Platform - AI-Powered Marketing Content Creation Platform on AWS
-
----
+## AI-Powered Marketing Content Creation Platform on AWS
 
 ### 1. Project Overview
 
-**AI Content Generator Platform** is a next-generation SaaS platform that helps small and medium-sized businesses (SMBs) automate their marketing content creation process using Generative AI technology. The platform combines **AWS Cloud** and the **Gemini API (Google AI)** to deliver a content generation solution that is diverse, scalable, and highly secure.
+**AI Content Generator Platform** is a next-generation SaaS platform that helps small and medium-sized businesses (SMBs) automate their marketing content creation workflows using Generative AI technology. The platform integrates **AWS Cloud** and **Gemini API (Google AI)** to deliver a highly scalable, secure, and diverse content generation solution.
 
-| Criteria | Value |
+| Criterion | Value |
 | --- | --- |
-| **Business Model** | SaaS – Monthly/Annual Subscription |
-| **Target Customers** | Small and medium-sized businesses, Marketing Agencies |
-| **AI Technology** | Gemini API (Google AI) via AWS Lambda |
-| **Infrastructure** | AWS ap-southeast-1 / ap-southeast-2 |
-| **Scalability** | Auto Scaling – from 10 to 10,000+ users |
-| **Availability** | Multi-AZ, RDS Failover – 99.9% uptime |
-
----
+| Business Model | SaaS — Monthly/Annual Subscription |
+| Target Customers | Small and Medium-sized Businesses (SMBs), Marketing Agencies |
+| AI Technology | Gemini API (Google AI) via AWS Lambda |
+| AWS Region | ap-southeast-1 (Singapore) |
+| Availability Zones | ap-southeast-1a and ap-southeast-1b |
+| Scalability | Auto Scaling Group (10–10,000+ users) |
+| High Availability | Multi-AZ Deployment, RDS Multi-AZ Failover (99.9% uptime) |
 
 ### 2. Objectives
 
 #### 2.1 Project Objectives
 
-| # | Objective | Success Metric |
+| # | Objective | Key Metric |
 | --- | --- | --- |
-| 1 | Build a complete MVP within 4 weeks (Week 9–12) | Go-live by end of Week 12 |
+| 1 | Build a complete MVP within 4 weeks (Weeks 9–12) | Go-live by the end of Week 12 |
 | 2 | Achieve high availability for the production system | Uptime ≥ 99.9% |
-| 3 | Automate the end-to-end AI content generation flow | < 60 seconds per content set |
-| 4 | Implement an architecture aligned with the AWS Well-Architected Framework | All 6 pillars covered |
-| 5 | Comprehensive security following the Least Privilege principle | No wildcard `*` permissions |
+| 3 | Automate the end-to-end AI content generation workflow | Execution time < 60 seconds per content set |
+| 4 | Deploy an architecture aligned with AWS Well-Architected Framework | Covers all 6 pillars |
+| 5 | Comprehensive security based on the Principle of Least Privilege | No wildcard `*` permissions |
 
-#### 2.2 Value Delivered
+#### 2.2 Delivered Value
 
-- **Time savings:** Content creation cycle shortened from 3–5 days to **under 30 minutes**
-- **Cost savings:** 60–80% reduction compared to hiring a Copywriter/Agency (from $500–3,000/month down to $50–150/month)
-- **Brand consistency:** Brand Persona ensures the correct tone of voice whether generating 10 or 1,000 posts
-- **Easy scalability:** Scale across multiple products, markets, and languages without linearly increasing headcount
+- **Time Savings:** Reduces content creation time from 3–5 days to **< 30 minutes**.
+- **Cost Savings:** Decreases costs by 60–80% compared to hiring a Copywriter/Agency (from $500–$3,000/month down to $50–$150/month).
+- **Brand Consistency:** Brand Persona ensures the correct tone of voice whether creating 10 or 1,000 articles.
+- **Effortless Scaling:** Easily scales across multiple products, markets, and languages without a linear increase in headcount.
 
----
-
-### 3. Problem Statement
+### 3. Problems to Solve
 
 #### 3.1 Market Context
 
-Southeast Asia's Digital Marketing market has grown strongly since the COVID-19 pandemic. SMBs face constant pressure to produce multi-channel content, while creative resources remain limited and Copywriter/Agency costs continue to rise.
+The Digital Marketing market in Southeast Asia has grown robustly post-COVID-19. SMBs face constant pressure to produce multi-channel content, while creative resources are limited and Copywriter/Agency costs continue to rise.
 
 #### 3.2 Core Problems
 
-**Problem 1 – High labor costs**
-The average SMB spends $500–$3,000/month on marketing content. High-quality creative talent is scarce and expensive.
+**Problem 1 — High Labor Costs**
+An average SMB needs to spend $500–$3,000/month on marketing content. High-quality creative talent is scarce and expensive.
 
-**Problem 2 – Lack of brand consistency**
-When multiple people or agencies produce content together, tone of voice and brand visuals tend to diverge, eroding end-customer trust.
+**Problem 2 — Lack of Brand Consistency**
+When multiple individuals or agencies produce content, the brand's voice and imagery easily diverge, leading to a loss of trust from end customers.
 
-**Problem 3 – Slow content production speed**
-The traditional workflow from brief → writing → review → revision → publishing takes an average of **3–7 business days**, which cannot keep up with real-time marketing demands.
+**Problem 3 — Slow Content Production Speed**
+The traditional workflow from brief → writing → approval → editing → publishing takes an average of **3–7 business days**, failing to keep up with the pace of real-time marketing.
 
-**Problem 4 – Difficulty scaling**
-As a business expands into more products or new markets, content demand multiplies, but headcount cannot scale linearly to match.
+**Problem 4 — Scalability Challenges**
+As businesses expand into new products or markets, content demand multiplies, but headcount cannot scale linearly.
 
-#### 3.3 Opportunity
+#### 3.3 Opportunities
 
-The rise of LLMs and their API integration capabilities create an opportunity to build a **content automation** platform that understands brand context, adapts to target audiences, and exports multiple formats — all through a simple interface that requires no technical skills.
-
----
+The widespread adoption of LLMs and open APIs offers an opportunity to build a **content automation platform**. This platform understands brand context, customizes output for target audiences, and exports to multiple formats—all within a simple interface requiring no technical skills.
 
 ### 4. Solution Architecture
 
-#### 4.1 Overview
+### 4.1 Overview
 
-The system is deployed on AWS using a multi-tier architecture, with clear separation between the Edge, API, Compute, Queue, AI Worker, and Data layers. All compute resources reside within a **VPC (10.0.0.0/16)** spanning **2 Availability Zones**.
+The system is deployed on Amazon Web Services (AWS) using a Multi-tier Architecture and adheres to the AWS Well-Architected Framework. The entire infrastructure is provisioned within an Amazon VPC (10.0.***.***/16) in the ap-southeast-1 (Singapore) region, spanning two Availability Zones (ap-southeast-1a and ap-southeast-1b) to ensure High Availability and Fault Tolerance.
 
-![Architecture](/aws-fcj-learning-journey/images/Proposal/architecture.png)
+The React SPA Frontend is hosted on Amazon S3 Static Website and distributed through Amazon CloudFront. CloudFront utilizes two Origins:
 
-#### 4.2 Architecture Components
+- Amazon S3 Static Website (React SPA)
+- Amazon API Gateway (REST API)
+
+Every API request passes through AWS WAF, Amazon API Gateway, and an Amazon Cognito Authorizer before being forwarded via VPC Link to an internal Application Load Balancer. The Application Load Balancer performs Health Checks and distributes requests to an Amazon EC2 Auto Scaling Group deployed across two Availability Zones.
+
+**Architecture Diagram:**
+
+![AI Content Generator Platform architecture](/aws-fcj-learning-journey/images/Proposal/proposal-architecture1.png)
+
+#### 4.2 Architectural Components
 
 | Layer | Service | Role |
 | --- | --- | --- |
-| **Edge & Security** | Amazon CloudFront | CDN distributing the React SPA globally, caching static content |
-| | AWS WAF | Protects against SQL Injection, XSS, Bots, and Layer 7 DDoS |
-| **API** | Amazon API Gateway | Receives requests, rate limiting, authentication via Cognito Authorizer |
-| | Amazon Cognito | User authentication and authorization (User Pool) |
-| **Compute** | Application Load Balancer | Distributes traffic to EC2, automatic Health Check, spans 2 AZs |
-| | Amazon EC2 (Express API) | Handles business logic: authentication, Brand Persona, Prompt building, RDS queries (deployed in a Private Subnet with no Public IP, receiving traffic only via the ALB) |
-| | Auto Scaling Group | Automatically scales EC2 count based on actual load |
-| **Queue & AI Worker** | Amazon SQS (Main Queue) | Receives AI tasks from EC2, processed asynchronously |
-| | AWS Lambda (Node.js) | Worker that pulls jobs from SQS and calls the Gemini API |
-| **AI** | Gemini API (Google AI) | LLM model generating marketing content |
-| **Data** | Amazon RDS PostgreSQL (Multi-AZ) | Stores users, Brand Personas, campaign history, job status |
-| | Amazon S3 | Stores exported files (PDF, DOCX, HTML), logos, brand assets |
-| **Observability** | CloudWatch | Logs, Metrics, Alarms across the whole system |
-| | AWS X-Ray | Distributed tracing – end-to-end request tracking |
-| **Security** | AWS Secrets Manager | Stores the Gemini API Key and other sensitive information |
-| | AWS KMS | Encrypts data at rest (RDS, S3) |
-| | AWS IAM | Least Privilege permissions for every service |
+| Edge & Security | Amazon CloudFront | Global Content Delivery Network (CDN), caches static assets, and routes requests to two Origins: Amazon S3 Static Website and Amazon API Gateway. |
+| | AWS WAF | Protects the application from SQL Injection, Cross-site Scripting (XSS), Layer 7 DDoS, and malicious bots before requests reach API Gateway. |
+| API | Amazon API Gateway | Performs JWT Validation via Amazon Cognito User Pool Authorizer before forwarding requests to the Application Load Balancer. |
+| | Amazon Cognito | Manages the User Pool, authenticates users with JWT Tokens, and acts as the Authorizer for Amazon API Gateway. |
+| Compute | Application Load Balancer | Deployed across two Availability Zones; receives requests from Amazon API Gateway, performs Health Checks, and distributes load to the Amazon EC2 Auto Scaling Group. |
+| | Amazon EC2 (Express API) | Handles all core system business logic, including user authentication, constructing prompts from Brand Personas, querying Amazon RDS PostgreSQL, and pushing AI Jobs to Amazon SQS. EC2 instances use an IAM Role to retrieve Database Credentials from AWS Secrets Manager. EC2 is deployed in Application Private Subnets with no Public IPs. |
+| | Auto Scaling Group | Automatically scales the number of EC2 instances based on actual load. |
+| Queue & AI Worker | Amazon SQS (Main Queue) | Receives AI jobs from EC2 for asynchronous processing. |
+| | Amazon SQS (Dead Letter Queue) | Captures failed messages via a Redrive Policy. |
+| | AWS Lambda (Node.js) | Lambda Worker deployed inside the VPC (VPC Attached) that **polls AI Jobs from the Amazon SQS Main Queue via Event Source Mapping**. It uses an IAM Role to retrieve the Gemini API Key from AWS Secrets Manager, accesses the Internet via NAT Gateway and Internet Gateway to invoke the Gemini API, and saves results to both Amazon S3 and Amazon RDS. |
+| Network & Connectivity | NAT Gateway | Deployed as 1 NAT Gateway per AZ in Public Subnets, allowing **Amazon EC2 and AWS Lambda (deployed in Private Subnets)** to initiate outbound Internet connections without Public IPs. |
+| | Internet Gateway | The Internet gateway for the VPC, enabling NAT Gateways to route traffic from EC2/Lambda to the Internet for external service integration (Gemini API, AWS public endpoints). |
+| | VPC Endpoint for S3 | A dedicated Gateway Endpoint for Amazon S3, allowing AWS Lambda to save AI results to the Amazon S3 Export Bucket over the AWS internal network without routing through the Internet. |
+| AI | Gemini API (Google AI) | LLM foundation model used to generate marketing content. |
+| Data | Amazon RDS PostgreSQL (Multi-AZ) | Deployed in Database Private Subnets with a DB Subnet Group spanning two Availability Zones. The application only connects to the **RDS Primary** endpoint; data is synchronously replicated to the **RDS Standby** for High Availability (the Standby instance is not directly accessed by the application). |
+| | Amazon S3 (Static Website) | Hosts the React Single Page Application (SPA) and serves as an Origin for Amazon CloudFront. |
+| | Amazon S3 (Export Bucket) | Stores AI-generated files including PDFs, DOCX, Images, and other assets. |
+| Observability | CloudWatch | Collects Logs, Metrics, and Alarms from Amazon EC2, AWS Lambda, and Amazon API Gateway for monitoring, alerting, and operational visibility. |
+| Security | AWS Secrets Manager | Securely stores the Gemini API Key and Database Credentials. Amazon EC2 and AWS Lambda access these secrets via IAM Roles in compliance with the Principle of Least Privilege. |
+| | AWS KMS | Manages encryption keys for Amazon RDS, Amazon S3, and AWS Secrets Manager to ensure Encryption at Rest. |
+| | AWS IAM | Enforces the Principle of Least Privilege. EC2 and Lambda utilize dedicated IAM Roles; no static IAM access keys are used. |
 
-#### 4.3 Main Processing Flow
+#### 4.3 Main Execution Flow
 
-1. User → React SPA → CloudFront
-2. CloudFront → WAF (checks for SQL Injection, XSS, Bots)
-3. WAF → API Gateway (Cognito authentication, rate limiting)
-4. API Gateway → ALB → EC2 (Auto Scaling Group)
-5. EC2: authenticates the user, builds the Prompt from the Brief + Brand Persona, queries RDS → pushes the job → SQS Main Queue
-6. Lambda Worker: pulls the job from SQS, retrieves the API Key from Secrets Manager → calls the Gemini API
-7. Gemini API generates the content
-8. Lambda: saves the file → S3, updates status → RDS
-9. EC2 returns the result to the UI → user edits & exports the file
+1. Users access the application via Amazon CloudFront.
+2. CloudFront retrieves the React SPA from Amazon S3 Static Website.
+3. CloudFront routes API requests to Amazon API Gateway.
+4. Amazon API Gateway validates the JWT via the Amazon Cognito Authorizer.
+5. Amazon API Gateway forwards the request through a VPC Link to the internal Application Load Balancer.
+6. The Application Load Balancer performs Health Checks and distributes the request to the Amazon EC2 Auto Scaling Group.
+7. Amazon EC2 executes business logic, queries Amazon RDS PostgreSQL, retrieves Database Credentials from AWS Secrets Manager using its IAM Role, and pushes an AI Job to the Amazon SQS Main Queue.
+8. The AWS Lambda Worker polls AI Jobs from the Amazon SQS Main Queue using Event Source Mapping (Lambda actively pulls the job; SQS does not push it).
+9. AWS Lambda retrieves the Gemini API Key from AWS Secrets Manager and initiates an outbound connection via the NAT Gateway.
+10. AWS Lambda saves the AI-generated results to the Amazon S3 Export Bucket via the Amazon VPC Endpoint for S3.
+11. AWS Lambda updates the job status in Amazon RDS PostgreSQL (**Primary**); data is automatically replicated to the RDS Standby (the application does not connect directly to the Standby).
+12. The NAT Gateway forwards traffic through the Internet Gateway to the Internet, allowing AWS Lambda to send the Prompt to the Gemini API (Google AI) and receive the generated content.
+13. Amazon EC2 queries the results from Amazon RDS and returns the response to Amazon API Gateway, CloudFront, and the React SPA.
 
 #### 4.4 AWS Well-Architected Framework
 
 | Pillar | Applied Solution |
 | --- | --- |
-| **Operational Excellence** | CloudWatch Alarms, X-Ray Tracing, automated CI/CD |
-| **Security** | WAF, IAM Least Privilege, Secrets Manager, KMS, Private Subnet |
-| **Reliability** | ALB + Auto Scaling, RDS Multi-AZ Failover |
-| **Performance Efficiency** | CloudFront CDN, Lambda Serverless, RDS Query Optimization |
-| **Cost Optimization** | Lambda pay-per-use, S3 Lifecycle Policy, demand-based Auto Scaling |
-| **Sustainability** | Resources provisioned only as actually needed; Dev environments shut down outside working hours |
-
----
+| Operational Excellence | CloudWatch, CI/CD |
+| Security | AWS WAF, IAM Least Privilege, Secrets Manager, KMS, Private Subnets |
+| Reliability | Application Load Balancer, Auto Scaling Group, Multi-AZ RDS, NAT Gateway, SQS DLQ, VPC Endpoint for S3 |
+| Performance Efficiency | CloudFront, Lambda, RDS Optimization |
+| Cost Optimization | Auto Scaling, Lambda Pay-per-use, S3 Lifecycle |
+| Sustainability | Scaling on demand, turning off Dev environment outside of business hours |
 
 ### 5. Timeline
 
-| Week | Goal | Key Activities | Milestone |
+| Week | Target | Key Tasks | Milestone |
 | --- | --- | --- | --- |
-| **9** | Complete AWS infrastructure | VPC + Subnets + IAM; RDS Multi-AZ + Secrets Manager; ALB + EC2 ASG; CloudFront + WAF + API Gateway + CI/CD | Successful ping test CloudFront → API GW → ALB → EC2 → RDS |
-| **10** | Backend business logic + basic UI | Auth API (JWT + Cognito); Brand Persona CRUD; Prompt engine from Brief + Persona; React Dashboard (UI v1.0) | Login, create Persona, submit Brief, receive auto-generated Prompt |
-| **11** | End-to-end AI Worker flow | SQS pipeline; Lambda → Gemini API → S3 + RDS; PDF/DOCX/HTML export; Load Testing & optimization | Brief → AI-generated content → PDF export in under 60 seconds |
-| **12** | Hardening & Production | Security audit (WAF, IAM, pentest); UAT + feedback collection; bug fixes + docs/runbook completion; Go-Live + onboarding | Production live, 24/7 monitoring, first customer onboarded |
-
----
+| 9 | Complete AWS Infrastructure | Design architecture diagram + VPC + Subnet + IAM; Multi-AZ RDS + Secrets Manager; ALB + EC2 ASG; CloudFront + WAF + API Gateway + CI/CD | Ping test: CloudFront → API Gateway → Application Load Balancer → EC2 → RDS |
+| 10 | Core Backend + Basic UI | Auth API (JWT + Cognito); CRUD Brand Persona; Prompt engine from Brief + Persona; React Dashboard (UI v1.0) | Successful login, Persona creation, Brief submission, automated Prompt generation |
+| 11 | End-to-End AI Worker Flow | SQS pipeline; Lambda → Gemini API → S3 + RDS; Export to PDF/DOCX/HTML; Load Testing & Optimization | Brief → AI content generation → Export PDF in < 60 seconds |
+| 12 | Hardening & Production | Security audit (WAF, IAM, pentest); UAT + user feedback; Bug fixing + finalize docs/runbook; Go-Live + Onboarding | Production live, 24/7 monitoring, first customer onboarded |
 
 ### 6. Budget
 
-#### 6.1 Build Project Cost
+#### 6.1 Project Build Costs
 
-| Service | Configuration | Monthly Cost |
+| Service | Configuration | Cost/Month |
 | --- | --- | --- |
 | Amazon EC2 | t3.medium × 2 (On-Demand, Auto Scaling min=2, 1/AZ) | ~$60 |
 | Amazon RDS PostgreSQL | db.t3.micro, Multi-AZ | ~$50 |
-| NAT Gateway | 2 AZ | ~$64 |
-| CloudFront | 100 GB transfer | ~$8 |
-| API Gateway | 1M requests | ~$3.50 |
+| NAT Gateway | Production: 2 NAT Gateways · Development: 1 NAT Gateway | ~$64 |
+| CloudFront | 100 GB Data Transfer | ~$8 |
+| API Gateway | 1M requests | ~$3–4/month (based on traffic) |
 | CloudWatch | Basic Logs + Metrics | ~$5 |
 | AWS Lambda | ~100,000 invocations, 512MB | ~$1 |
 | Amazon SQS | ~500,000 requests | ~$0.20 |
 | Amazon S3 | 50 GB | ~$2 |
-| AWS Secrets Manager | 1 secret (Gemini API Key) | ~$1 |
-| AWS KMS | 1 CMK (encrypts RDS + S3) | ~$1 |
+| AWS Secrets Manager | 2 Secrets (Gemini API Key, Database Credentials) | ~$2/month |
+| AWS KMS | 1 Customer Managed KMS Key (used for RDS, S3, Secrets Manager) | ~$1 |
 | Amazon Cognito | < 50,000 MAU (Free Tier) | $0 |
-| **Total AWS/month** | | **~$196** |
-
-> 💡 **Note:** ElastiCache Redis will be added in Phase 2 once concurrent users exceed 200+, to offload RDS and optimize response time.
+| **Total AWS/Month** | | **~$196** |
 
 #### Gemini API (Google AI)
 
@@ -168,14 +172,12 @@ The system is deployed on AWS using a multi-tier architecture, with clear separa
 
 #### 6.2 Cost Optimization Strategy
 
-- **Reserved Instances:** Reserve EC2 and RDS for 1 year → save 30–40%
-- **Lambda Serverless:** AI Worker is billed only when a job runs, no idle cost
-- **CloudFront caching:** Reduces requests reaching EC2 and bandwidth load
-- **S3 Lifecycle Policy:** Automatically moves files older than 90 days to S3 Glacier
-- **Auto Scaling:** Scales down to minimum instances outside peak hours
-- **Spot Instances for Dev:** Saves 60–70% compared to On-Demand
-
----
+- **Reserved Instances:** Committing to a 1-year term for EC2 and RDS saves 30–40%.
+- **Lambda Serverless:** The AI Worker only incurs charges during execution, eliminating idle costs.
+- **CloudFront Caching:** Minimizes backend requests to EC2 and reduces bandwidth consumption.
+- **S3 Lifecycle Policy:** Automatically transitions files older than 90 days to S3 Glacier.
+- **Auto Scaling:** Scales down to the minimum instance count outside of peak hours.
+- **Spot Instances for Dev:** Saves 60–70% compared to On-Demand pricing.
 
 ### 7. Risks
 
@@ -184,55 +186,31 @@ The system is deployed on AWS using a multi-tier architecture, with clear separa
 | Risk | Likelihood | Impact |
 | --- | --- | --- |
 | Gemini API downtime/throttling | Medium | High |
-| Gemini API cost exceeding budget | High | Medium |
-| User data security breach | Low | Very High |
-| EC2 instance failure (not Multi-AZ) | Low | High |
+| Gemini API costs exceeding budget | High | Medium |
+| User data security vulnerability | Low | Critical |
+| Individual EC2 instance failure (mitigated by Multi-AZ Auto Scaling Group auto-replacement) | Medium | Low |
 | Slow RDS failover | Low | Medium |
-| Lambda timeout due to slow Gemini response | Medium | Medium |
-| AWS cost exceeding estimate | Medium | Low |
-| Phase 3 (AI Integration) schedule delay | Medium | Low |
+| Lambda timeout during slow Gemini responses | Medium | Medium |
+| AWS costs exceeding estimation | Medium | Low |
+| Schedule delay in Phase 3 (AI Integration) | Medium | Low |
 
 #### 7.2 Mitigation Measures
 
-**Gemini API Downtime/Throttling:**
-
-- Lambda retry with Exponential Backoff (3 attempts, max 5 minutes)
-- CloudWatch Alarm when failed job count rises abnormally
-- Fallback: integrate OpenAI API or Amazon Bedrock (Phase 2+)
-
-**Gemini API Cost Exceeding Budget:**
-
-- Limit AI calls per plan (Free: 10/month, Basic: 100, Pro: unlimited)
-- Rate limiting at the API Gateway (requests/minute per user)
-- Google Cloud Budget Alert + AWS Cost Anomaly Detection
-
-**User Data Security Breach:**
-
-- EC2, Lambda, and RDS reside in a Private Subnet (no Public IP)
-- KMS encrypts data at rest (RDS + S3); all connections use TLS 1.2+
-- Secrets Manager fully replaces environment variables for credentials
-- WAF blocks SQL Injection, XSS, and bad bots; CloudTrail audit-logs all API calls
-- IAM permissions reviewed every 90 days
-
-**Lambda Timeout from Slow Gemini Responses:**
-
-- Lambda timeout = 270 seconds (with buffer below the 300-second max)
-- Each job generates only one content type (multiple types are never batched into a single Lambda call)
-- Streaming responses from the Gemini API where possible
-- On timeout, the job automatically retries with higher priority
-
-**Phase 3 (AI Integration) Schedule Delay:**
-
-- 1-week buffer (Week 12) reserved for Performance Testing and bug fixing
-- Lambda + Gemini API prototyped independently from Week 2, in parallel with Phase 1
-- Use the free Gemini API Sandbox during development
+- AWS WAF protects the system against SQL Injection, XSS, and Bots.
+- Amazon API Gateway uses Cognito Authorizer for JWT validation.
+- The Application Load Balancer receives requests from Amazon API Gateway and distributes traffic to the Amazon EC2 Auto Scaling Group across two Availability Zones—ensuring a single instance failure is automatically resolved by ASG without impacting system availability.
+- Amazon EC2, AWS Lambda, and Amazon RDS are all located in Private Subnets.
+- AWS Secrets Manager stores Database Credentials and Gemini API Key.
+- AWS KMS encrypts Amazon RDS, Amazon S3, and AWS Secrets Manager.
+- NAT Gateways and Internet Gateways restrict outbound connections, limiting access only to necessary external endpoints (Gemini API, AWS public endpoints).
+- Amazon VPC Endpoint for S3 allows AWS Lambda to write data to Amazon S3 via the AWS internal network, avoiding the public Internet.
+- IAM Roles enforce the Principle of Least Privilege.
+- All connections utilize TLS 1.2 or higher.
 
 ---
 
->References:
->
->[AWS Well-Architected](https://aws.amazon.com/architecture/well-architected/)
->
->[Gemini API Docs](https://ai.google.dev/docs)
->
->[Amazon SQS Best Practices](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/best-practices.html)
+**References:**
+
+- AWS Well-Architected — <https://aws.amazon.com/architecture/well-architected/>
+- Gemini API Docs — <https://ai.google.dev/docs>
+- Amazon SQS Best Practices — <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/best-practices.html>
