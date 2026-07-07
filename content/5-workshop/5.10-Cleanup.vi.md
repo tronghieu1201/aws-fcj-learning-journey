@@ -1,0 +1,78 @@
+---
+title: "Dọn dẹp tài nguyên"
+date: 2026-07-01
+weight: 10
+chapter: false
+pre: " <b> 5.10 </b> "
+---
+
+## Vì sao cần dọn dẹp
+
+Hạ tầng AWS tính phí theo giờ/theo dung lượng bất kể có đang được dùng hay không (EC2, RDS, NAT Gateway, ElastiCache...). Có 2 tình huống cần xử lý khác nhau: **tiết kiệm chi phí trong lúc vẫn đang phát triển** (không xóa, chỉ tạm ngưng) và **dọn dẹp toàn bộ** (xóa hẳn khi dự án đã hoàn tất, không còn nhu cầu duy trì).
+
+## Tiết kiệm chi phí trong quá trình phát triển (không xóa tài nguyên)
+
+Trong suốt 4 tuần triển khai, các tài nguyên tính phí theo thời gian chạy được tạm ngưng ngoài giờ làm việc, khởi động lại trước mỗi phiên code:
+
+| Tài nguyên | Hành động | Lưu ý |
+| --- | --- | --- |
+| Auto Scaling Group | Giảm `Desired capacity` về 0 qua đêm | Không xóa ASG, chỉ scale về 0 → không tốn phí EC2 khi không dùng |
+| RDS PostgreSQL | `aws rds stop-db-instance` | AWS tự động **khởi động lại sau tối đa 7 ngày** dừng — cần stop lại thủ công nếu quên |
+
+```bash
+# Tạm ngưng cuối ngày
+aws autoscaling update-auto-scaling-group --auto-scaling-group-name quillo-api-asg --desired-capacity 0
+aws rds stop-db-instance --db-instance-identifier quillo-prod-db
+
+# Khởi động lại đầu phiên làm việc
+aws autoscaling update-auto-scaling-group --auto-scaling-group-name quillo-api-asg --desired-capacity 2
+aws rds start-db-instance --db-instance-identifier quillo-prod-db
+```
+
+## Dọn dẹp toàn bộ (khi không còn nhu cầu duy trì hệ thống)
+
+Thứ tự xóa **quan trọng** vì nhiều tài nguyên phụ thuộc lẫn nhau (xóa sai thứ tự sẽ báo lỗi dependency):
+
+| Bước | Tài nguyên | Lý do về thứ tự |
+| --- | --- | --- |
+| 1 | Làm rỗng và xóa S3 Bucket (`quillo-frontend-prod`, `quillo-exports-prod`, `quillo-assets-prod`) | Bucket không rỗng không xóa được |
+| 2 | Xóa Application Load Balancer + Target Group | Phải xóa trước Security Group liên quan |
+| 3 | Xóa Auto Scaling Group (kèm theo terminate toàn bộ EC2) | Phải xóa trước Launch Template |
+| 4 | Xóa Launch Template | — |
+| 5 | Xóa RDS Instance (bỏ qua final snapshot nếu không cần giữ dữ liệu) | — |
+| 6 | Xóa ElastiCache Redis Cluster | — |
+| 7 | Xóa Lambda Function + Event Source Mapping (SQS trigger) | Phải gỡ trigger trước khi xóa Lambda |
+| 8 | Xóa SQS Queue (Main Queue trước, DLQ sau) | — |
+| 9 | Xóa Secrets Manager Secret (`--force-delete-without-recovery` để xóa ngay, mặc định có recovery window 30 ngày vẫn tính phí) | — |
+| 10 | Xóa WAF WebACL | Phải disassociate khỏi ALB trước (ALB đã xóa ở bước 2 nên tự động gỡ) |
+| 11 | Xóa NAT Gateway + release Elastic IP | NAT Gateway tính phí theo giờ dù không dùng — dễ bị quên nhất, gây phát sinh phí âm thầm |
+| 12 | Xóa Subnet → Route Table → Internet Gateway → VPC | Phải xóa theo đúng thứ tự con trước cha |
+| 13 | Xóa IAM Role/Policy (`quillo-ec2-role`, `quillo-lambda-role`, `quillo-github-actions-deploy-role`) | Không tính phí nhưng nên dọn để sạch tài khoản |
+| 14 | Xóa image trong ECR Repository, sau đó xóa Repository | — |
+| 15 | Cloudflare: tắt Proxy hoặc xóa DNS record | Không bắt buộc nếu vẫn muốn giữ domain cho việc khác |
+
+```bash
+# Ví dụ nhóm lệnh dọn dẹp (không đầy đủ, minh họa thứ tự)
+aws s3 rm s3://quillo-frontend-prod --recursive && aws s3 rb s3://quillo-frontend-prod
+aws elbv2 delete-load-balancer --load-balancer-arn <alb-arn>
+aws autoscaling delete-auto-scaling-group --auto-scaling-group-name quillo-api-asg --force-delete
+aws rds delete-db-instance --db-instance-identifier quillo-prod-db --skip-final-snapshot
+aws elasticache delete-cache-cluster --cache-cluster-id quillo-redis-prod
+aws lambda delete-function --function-name quillo-worker
+aws sqs delete-queue --queue-url <main-queue-url>
+aws secretsmanager delete-secret --secret-id quillo/app-secrets-prod --force-delete-without-recovery
+aws wafv2 delete-web-acl --name quillo-waf --scope REGIONAL --id <id> --lock-token <token>
+aws ec2 delete-nat-gateway --nat-gateway-id <nat-id>
+aws ec2 release-address --allocation-id <eip-alloc-id>
+```
+
+## Kiểm chứng không còn tài nguyên tính phí sót lại
+
+```bash
+aws rds describe-db-instances --region ap-southeast-1
+aws autoscaling describe-auto-scaling-groups --region ap-southeast-1 --query "AutoScalingGroups[].AutoScalingGroupName"
+aws ec2 describe-nat-gateways --filter "Name=state,Values=available" --region ap-southeast-1
+aws elasticache describe-cache-clusters --region ap-southeast-1
+```
+
+> **Kết quả mong đợi:** cả 4 lệnh trả về danh sách **rỗng** (`[]` hoặc không có dòng nào khớp `quillo-*`) — xác nhận không còn tài nguyên nào tiếp tục tính phí. Kiểm tra thêm AWS Billing → Cost Explorer sau 24h để chắc chắn chi phí phát sinh mới về 0.

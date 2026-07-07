@@ -1,0 +1,78 @@
+---
+title: "Cleanup"
+date: 2026-07-01
+weight: 10
+chapter: false
+pre: " <b> 5.10 </b> "
+---
+
+## Why Cleanup Matters
+
+AWS infrastructure is billed hourly/by capacity regardless of whether it's actively used (EC2, RDS, NAT Gateway, ElastiCache, etc.). Two different situations need to be handled: **saving cost while still actively developing** (pausing, not deleting) and **full cleanup** (deleting entirely once the project is complete and no longer needs to be maintained).
+
+## Cost Savings During Development (No Resources Deleted)
+
+Throughout the 4-week implementation, time-billed resources were paused outside working hours and restarted before each coding session:
+
+| Resource | Action | Note |
+| --- | --- | --- |
+| Auto Scaling Group | Set `Desired capacity` to 0 overnight | The ASG isn't deleted, just scaled to 0 → no EC2 cost while unused |
+| RDS PostgreSQL | `aws rds stop-db-instance` | AWS **automatically restarts it after a maximum of 7 days** stopped — needs to be re-stopped manually if forgotten |
+
+```bash
+# Pause at the end of the day
+aws autoscaling update-auto-scaling-group --auto-scaling-group-name quillo-api-asg --desired-capacity 0
+aws rds stop-db-instance --db-instance-identifier quillo-prod-db
+
+# Restart at the start of a work session
+aws autoscaling update-auto-scaling-group --auto-scaling-group-name quillo-api-asg --desired-capacity 2
+aws rds start-db-instance --db-instance-identifier quillo-prod-db
+```
+
+## Full Cleanup (When the System No Longer Needs to Be Maintained)
+
+The deletion order **matters**, since many resources depend on each other (deleting in the wrong order triggers dependency errors):
+
+| Step | Resource | Reason for ordering |
+| --- | --- | --- |
+| 1 | Empty and delete S3 buckets (`quillo-frontend-prod`, `quillo-exports-prod`, `quillo-assets-prod`) | A non-empty bucket cannot be deleted |
+| 2 | Delete the Application Load Balancer + Target Group | Must be deleted before its related Security Groups |
+| 3 | Delete the Auto Scaling Group (terminating all EC2 instances) | Must be deleted before the Launch Template |
+| 4 | Delete the Launch Template | — |
+| 5 | Delete the RDS Instance (skip the final snapshot if the data doesn't need to be kept) | — |
+| 6 | Delete the ElastiCache Redis cluster | — |
+| 7 | Delete the Lambda function + Event Source Mapping (SQS trigger) | The trigger must be removed before the function is deleted |
+| 8 | Delete the SQS queues (Main Queue first, then the DLQ) | — |
+| 9 | Delete the Secrets Manager secret (`--force-delete-without-recovery` to delete immediately; the default 30-day recovery window still incurs charges) | — |
+| 10 | Delete the WAF WebACL | Must be disassociated from the ALB first (already handled automatically since the ALB was deleted in step 2) |
+| 11 | Delete the NAT Gateways + release their Elastic IPs | NAT Gateways are billed hourly even when unused — the easiest one to forget, quietly generating ongoing cost |
+| 12 | Delete subnets → route tables → internet gateway → the VPC | Child resources must be deleted before their parent |
+| 13 | Delete IAM Roles/Policies (`quillo-ec2-role`, `quillo-lambda-role`, `quillo-github-actions-deploy-role`) | Not billed, but good practice to keep the account clean |
+| 14 | Delete images in the ECR repository, then delete the repository | — |
+| 15 | Cloudflare: disable the proxy or delete the DNS record | Optional if the domain is still wanted for other purposes |
+
+```bash
+# Example cleanup command group (not exhaustive, illustrates the order)
+aws s3 rm s3://quillo-frontend-prod --recursive && aws s3 rb s3://quillo-frontend-prod
+aws elbv2 delete-load-balancer --load-balancer-arn <alb-arn>
+aws autoscaling delete-auto-scaling-group --auto-scaling-group-name quillo-api-asg --force-delete
+aws rds delete-db-instance --db-instance-identifier quillo-prod-db --skip-final-snapshot
+aws elasticache delete-cache-cluster --cache-cluster-id quillo-redis-prod
+aws lambda delete-function --function-name quillo-worker
+aws sqs delete-queue --queue-url <main-queue-url>
+aws secretsmanager delete-secret --secret-id quillo/app-secrets-prod --force-delete-without-recovery
+aws wafv2 delete-web-acl --name quillo-waf --scope REGIONAL --id <id> --lock-token <token>
+aws ec2 delete-nat-gateway --nat-gateway-id <nat-id>
+aws ec2 release-address --allocation-id <eip-alloc-id>
+```
+
+## Verifying No Billable Resources Remain
+
+```bash
+aws rds describe-db-instances --region ap-southeast-1
+aws autoscaling describe-auto-scaling-groups --region ap-southeast-1 --query "AutoScalingGroups[].AutoScalingGroupName"
+aws ec2 describe-nat-gateways --filter "Name=state,Values=available" --region ap-southeast-1
+aws elasticache describe-cache-clusters --region ap-southeast-1
+```
+
+> **Expected result:** all 4 commands return an **empty** list (`[]` or no entries matching `quillo-*`) — confirming no resources continue to incur charges. Also check AWS Billing → Cost Explorer after 24 hours to confirm no new charges are accruing.

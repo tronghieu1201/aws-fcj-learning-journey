@@ -1,19 +1,24 @@
 ---
 title: "Workshop"
+date: 2026-07-01
 weight: 5
-chapter: true
-pre: "<b>5. </b>"
+chapter: false
+pre: " <b> 5. </b> "
 ---
 
-# Workshop
+This section documents the actual implementation of the graduation workshop project — **AI Content Generator Platform**, a multi-tenant SaaS platform that automates marketing content production using Generative AI (Gemini API), fully deployed on real AWS infrastructure (VPC, RDS Multi-AZ, EC2 Auto Scaling, SQS/Lambda, WAF, CI/CD) over 4 weeks (Week 9–12).
+ 
+All content below reflects the actual deployment.
 
-> 📝 *This section is where you document your own original workshop. Choose a topic from your 12-week learning journey and build a step-by-step guide.*
+## Content
 
-Choose a lab or topic from your learning journey and write an original workshop. Refer to the [FCJ Workshop Template](https://github.com/thienluhoan/fcj-workshop-template) for structure guidance.
-
-**Suggested topics based on your learning path:**
-- Highly Available Web App on AWS (EC2 + RDS + ALB)
-- Serverless REST API with Lambda + API Gateway + DynamoDB
-- CI/CD Pipeline with AWS CodePipeline
-- Container Deployment with ECS Fargate
-- Data Lake with S3 + Glue + Athena
+1. [Project Overview](5.1-introduction.md)
+2. [Prerequisites](5.2-prerequisites.md)
+3. [Networking](5.3-Networking.md)
+4. [Data & Cache](5.4-Data-Cache.md)
+5. [Compute](5.5-Compute.md)
+6. [Asynchronous Processing](5.6-Async-Worker.md)
+7. [CDN & Security](5.7-CDN-Security.md)
+8. [CI/CD](5.8-CICD.md)
+9. [Testing & Operations](5.9-Testing.md)
+10. [Cleanup](5.10-Cleanup.md)
