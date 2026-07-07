@@ -73,7 +73,7 @@ title: "Báo cáo thực tập"
       <tbody>
         <tr><td><strong>Họ tên</strong></td><td>Giáp Trọng Hiếu</td></tr>
         <tr><td><strong>Số điện thoại</strong></td><td>0342157165</td></tr>
-        <tr><td><strong>Email</strong></td><td><a href="mailto:tronghi.dev16@gmail.com" style="color: #0969da;">tronghi.dev16@gmail.com</a></td></tr>
+        <tr><td><strong>Email</strong></td><td><a href="mailto:tronghieu.dev16@gmail.com" style="color: #0969da;">tronghieu.dev16@gmail.com</a></td></tr>
         <tr><td><strong>Trường</strong></td><td>Trường Đại Học Công Nghệ TP.HCM</td></tr>
         <tr><td><strong>Ngành</strong></td><td>Công nghệ thông tin</td></tr>
         <tr><td><strong>Chuyên ngành</strong></td><td>Công nghệ phần mềm</td></tr>
