@@ -77,8 +77,8 @@ title: "Internship Report"
         <tr><td><strong>University</strong></td><td>Ho Chi Minh City University of Technology (HUTECH)</td></tr>
         <tr><td><strong>Major</strong></td><td>Information Technology</td></tr>
         <tr><td><strong>Specialization</strong></td><td>Software Engineering</td></tr>
-        <tr><td><strong>Internship Company</strong></td><td>Bootcamp First Cloud AI Journey</td></tr>
-        <tr><td><strong>Internship Position</strong></td><td>Cloud Engineer</td></tr>
+        <tr><td><strong>Internship Company</strong></td><td>Amazon Web Services Viet Nam Company Limited</td></tr>
+        <tr><td><strong>Internship Position</strong></td><td>Workforce Bootcamp - First Cloud AI Journey</td></tr>
         <tr><td><strong>Internship Period</strong></td><td>17/04/2026 - 10/07/2026</td></tr>
       </tbody>
     </table>
