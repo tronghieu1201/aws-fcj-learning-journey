@@ -77,9 +77,9 @@ title: "Báo cáo thực tập"
         <tr><td><strong>Trường</strong></td><td>Trường Đại Học Công Nghệ TP.HCM</td></tr>
         <tr><td><strong>Ngành</strong></td><td>Công nghệ thông tin</td></tr>
         <tr><td><strong>Chuyên ngành</strong></td><td>Công nghệ phần mềm</td></tr>
-        <tr><td><strong>Công ty thực tập</strong></td><td>Công ty TNHH Amazon Web Services Viet Nam</td></tr>
+        <tr><td><strong>Công ty thực tập</strong></td><td>Công ty TNHH Amazon Web Services Việt Nam</td></tr>
         <tr><td><strong>Vị trí thực tập</strong></td><td>Workforce Bootcamp - First Cloud AI Journey</td></tr>
-        <tr><td><strong>Thời gian thực tập</strong></td><td>17/04/2026 - 10/07/2026</td></tr>
+        <tr><td><strong>Thời gian thực tập</strong></td><td>17/04/2026 - 30/07/2026</td></tr>
       </tbody>
     </table>
   </div>
